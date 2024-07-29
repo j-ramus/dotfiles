@@ -1,8 +1,8 @@
-font_family MesloLGM Nerd Font Mono 
+font_family MesloLGS NF
 font_size 20
 
 window_padding_width 0
-macos_titlebar_color background
+# macos_titlebar_color background
 # active_border_color none
 # inactive_border_color #555
 
@@ -51,6 +51,6 @@ macos_titlebar_color background
 
 
 # BEGIN_KITTY_THEME
-# Neowave
+# Monoindustrial
 include current-theme.conf
 # END_KITTY_THEME

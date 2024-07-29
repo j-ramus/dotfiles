@@ -2,33 +2,55 @@
 
 This directory contains the dotfiles for my system
 
-## Requirements
+## MacOS
 
-Ensure you have the following installed on your system
-
-### Git
+### Install homebrew
 
 ```
-pacman -S git
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
-
-### Stow
-
-```
-pacman -S stow
-```
-
-## Installation
-
-First, check out the dotfiles repo in your $HOME directory using git
+### Install Git
 
 ```
-$ git clone git@github.com/dreamsofautonomy/dotfiles.git
-$ cd dotfiles
+brew install git
+```
+### Clone dotfiles repo while pwd is ~/
+
+
+```
+git clone https://github.com/j-ramus/dotfiles.git
 ```
 
-then use GNU stow to create symlinks
+Install bundle
+
+```
+$ brew install bundle
+
+```
+
+Run bundle on the Brewfile
+
+```
+$ brew bundle --file=~/dotfiles/brew/Brewfile
+```
+### Stow dotfiles
+
+Move to the dotfiles directory
+```
+cd ~/dotfiles
+```
+``
+
+then use GNU stow to create all symlinks
 
 ```
 $ stow .
 ```
+or by individual package
+
+```
+$ stow <directory name>
+```
+
+
+
