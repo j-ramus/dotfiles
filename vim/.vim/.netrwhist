@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =4
+let g:netrw_dirhist_4='/Users/ramus/Applications'
+let g:netrw_dirhist_3='/private/etc'
+let g:netrw_dirhist_2='/etc'
+let g:netrw_dirhist_1='/Users/ramus'
+let g:netrw_dirhist_0='/Users/ramus/.config'
+let g:netrw_dirhist_9='/Users/ramus'
+let g:netrw_dirhist_8='/Users/ramus/.vim'
+let g:netrw_dirhist_7='/Users/ramus/.vim/plugged'
+let g:netrw_dirhist_6='/Users/ramus/.vim'
+let g:netrw_dirhist_5='/Users/ramus'
