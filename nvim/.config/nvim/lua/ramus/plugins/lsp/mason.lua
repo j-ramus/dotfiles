@@ -37,6 +37,8 @@ return {
         "emmet_ls",
         "prismals",
         "pyright",
+        "clangd",
+        "taplo",
       },
     })
 

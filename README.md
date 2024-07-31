@@ -52,5 +52,8 @@ or by individual package
 $ stow <directory name>
 ```
 
-
+To backup brew
+```
+$ brew bundle dump
+```
 

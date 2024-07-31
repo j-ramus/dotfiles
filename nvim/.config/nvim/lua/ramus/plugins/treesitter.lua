@@ -79,7 +79,6 @@ return {
         "v",
         "commonlisp"
 
-
       },
       incremental_selection = {
         enable = true,
