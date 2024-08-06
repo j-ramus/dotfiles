@@ -3,6 +3,15 @@ vim.g.mapleader = " "
 local keymap = vim.keymap
 
 keymap.set("i", "jk", "<ESC>", { desc = "Exit insert mode with jk"})
+
+keymap.set("i", "teh", "the")
+keymap.set("i", "Teh", "The")
+keymap.set("i", "thier", "their")
+keymap.set("i", "Thier", "Their")
+keymap.set("i", "osu", "Oregon State University")
+keymap.set("i", "jr", "John Ramus")
+
+
 keymap.set("n", "<leader>nh", ":nohl<CR>", { desc = "Clear search highlights" })
 
 -- increment/decrement numbers
@@ -26,6 +35,7 @@ keymap.set("n", "<leader>tt", "<cmd>tabnew <bar> NvimTreeToggle<CR>)", { desc = 
 
 keymap.set("n", "<Leader>o", ":Telescope oldfiles<CR>", { desc = "Recent Files", silent = true })
 keymap.set("n", "<Leader>b", ":Telescope buffers<CR>", { desc = "Active Buffers", silent = true })
+keymap.set("n", "<Leader>r", ":Telescope registers<CR>", { desc = "Registers", silent = true })
 
 keymap.set("n", "<Leader>0",":normal! Go<CR>", { desc = "New Line", silent = true })
 

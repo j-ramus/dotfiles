@@ -53,6 +53,7 @@ ZSH_THEME="cobalt2"
 # or set a custom format using the strftime function format specifications,
 # see 'man strftime' for details.
 # HIST_STAMPS="mm/dd/yyyy"
+# HIST_STAMPS="mm/dd/yyyy"
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
@@ -62,7 +63,7 @@ ZSH_THEME="cobalt2"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=( tmux )
+plugins=( git tmux )
 
 source $ZSH/oh-my-zsh.sh
 
@@ -110,3 +111,11 @@ function yy() {
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias y="yazi"
+alias v="nvim"
+alias p="ping 8.8.8.8"
+#alias l="ls -1a"
+alias h="cd ~/"
+alias s="ssh ramus@192.168.1.84"
+alias m="cmatrix -sbu8 -C blue"
+#alias lg="lazygit"

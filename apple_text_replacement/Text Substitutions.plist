@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>phrase</key>
+		<string>On my way!</string>
+		<key>shortcut</key>
+		<string>omw</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>Oregon State University</string>
+		<key>shortcut</key>
+		<string>osu</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>the</string>
+		<key>shortcut</key>
+		<string>teh</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>The</string>
+		<key>shortcut</key>
+		<string>Teh</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>their</string>
+		<key>shortcut</key>
+		<string>thier</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>Their</string>
+		<key>shortcut</key>
+		<string>Thier</string>
+	</dict>
+</array>
+</plist>

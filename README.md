@@ -39,7 +39,6 @@ Move to the dotfiles directory
 ```
 cd ~/dotfiles
 ```
-``
 
 then use GNU stow to create all symlinks
 
@@ -52,7 +51,7 @@ or by individual package
 $ stow <directory name>
 ```
 
-To backup brew
+## To backup brew
 ```
 $ brew bundle dump
 ```
@@ -62,7 +61,7 @@ $ brew bundle dump
 ## Text Replace
 
 # Export text replacements
-1. On your Mac, choose Apple menu  > System Settings, then click Keyboard  in the sidebar. (You may need to scroll down.)
+1. On your Mac, choose Apple menu  > System Settings, then click Keyboard  in the sidebar. (You may need to scroll down.)
 
 If you’re working in an app, you can also choose Edit > Substitutions > Show Substitutions, then click Text Settings.
 
@@ -73,7 +72,7 @@ If you’re working in an app, you can also choose Edit > Substitutions > Show S
 4. Drag the selected replacements from the Text Replacements window to the desktop. This creates a backup file named Text Substitutions.plist.
 
 # Import text replacements
-1. On the Mac where you want to import the text replacements, choose Apple menu  > System Settings, then click Keyboard  in the sidebar. (You may need to scroll down.)
+1. On the Mac where you want to import the text replacements, choose Apple menu  > System Settings, then click Keyboard  in the sidebar. (You may need to scroll down.)
 
 If you’re working in an app, you can also choose Edit > Substitutions > Show Substitutions, then click Text Settings.
 
