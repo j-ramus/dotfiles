@@ -6,3 +6,4 @@ return {
     indent = { char = "┊" },
   },
 }
+-- old seperator character was  "┊"

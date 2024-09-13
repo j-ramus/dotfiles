@@ -103,6 +103,10 @@ function yy() {
 # ssh
 # export SSH_KEY_PATH="~/.ssh/rsa_id"
 
+# Set up fzf key bindings and fuzzy completion
+source <(fzf --zsh)
+
+
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
@@ -113,9 +117,21 @@ function yy() {
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias y="yazi"
 alias v="nvim"
-alias p="ping 8.8.8.8"
-#alias l="ls -1a"
+alias p="ping -c 5 8.8.8.8"
 alias h="cd ~/"
-alias s="ssh ramus@192.168.1.84"
+alias timecube="ssh timecube"
 alias m="cmatrix -sbu8 -C blue"
-#alias lg="lazygit"
+alias crimson="ssh ramus@192.168.1.114"
+alias holy="ssh holymountain"
+alias :q="exit" 
+alias inv='nvim $(fzf -m --preview="bat --color=always {}")'
+alias osu='nvim ~/Documents/OSU/Fall2024/' 
+alias config='nvim ~/.config'
+
+#ssh-agent
+fastfetch
+
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

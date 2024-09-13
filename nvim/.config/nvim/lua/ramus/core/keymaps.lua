@@ -10,6 +10,7 @@ keymap.set("i", "thier", "their")
 keymap.set("i", "Thier", "Their")
 keymap.set("i", "osu", "Oregon State University")
 keymap.set("i", "jr", "John Ramus")
+keymap.set("i", "adn", "and")
 
 
 keymap.set("n", "<leader>nh", ":nohl<CR>", { desc = "Clear search highlights" })
@@ -41,3 +42,8 @@ keymap.set("n", "<Leader>0",":normal! Go<CR>", { desc = "New Line", silent = tru
 
 keymap.set("n", "<Leader>ll", ":VimtexCompile<CR>", { desc = "Toggle tex compiler", silent = true })
 keymap.set("n", "<Leader>lt", ":VimtexTocToggle<CR>", { desc = "Toggle tex TOC", silent = true })
+ 
+keymap.set("n", "<Leader>lw", "<Cmd>!texcount -1 '%:p'<CR>", { desc = "Word Count", silent = true})
+
+keymap.set("n", "<Leader>ta", "<Cmd>tab all<CR>", { desc = "All buffers into tabs", silent = true })
+keymap.set("n", "<Leader>md", "<Cmd>MarkdownToPDF<CR>", { desc = "Compile Markdown to PDF", silent = true })
