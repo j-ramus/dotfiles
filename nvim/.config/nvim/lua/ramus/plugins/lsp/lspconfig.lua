@@ -85,6 +85,16 @@ return {
           capabilities = capabilities,
         })
       end,
+
+      -- clangd setup
+      ["clangd"] = function()
+        lspconfig["clangd"].setup({
+          cmd = { "clangd", "--query-driver=/usr/bin/clang,/usr/bin/gcc", "--all-scopes-completion" },
+          root_dir = require("lspconfig.util").root_pattern("compile_commands.json", ".git"),
+          capabilities = capabilities,
+        })
+      end,
+
       ["svelte"] = function()
         -- configure svelte server
         lspconfig["svelte"].setup({

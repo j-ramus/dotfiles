@@ -1,5 +1,22 @@
 vim.cmd("let g:netrw_liststyle = 3")
 
+vim.g.vimtex_compiler_latexmk = {
+  backend = 'biber',
+  build_dir = '',
+  callback = 1,
+  continuous = 1,
+  executable = 'latexmk',
+  options = {
+    '-pdf',
+    '-pdflatex=xelatex',
+    '-shell-escape',
+    '-verbose',
+    '-file-line-error',
+    '-synctex=1',
+    '-interaction=nonstopmode',
+  }
+}
+
 local opt = vim.opt
 
 opt.relativenumber = true
