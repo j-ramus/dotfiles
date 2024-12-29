@@ -9,7 +9,7 @@ keymap.set("i", "teh", "the")
 keymap.set("i", "Teh", "The")
 keymap.set("i", "thier", "their")
 keymap.set("i", "Thier", "Their")
-keymap.set("i", "osu", "Oregon State University")
+--keymap.set("i", "osu", "Oregon State University")
 keymap.set("i", "jr", "John Ramus")
 keymap.set("i", "adn", "and")
 
@@ -27,6 +27,7 @@ keymap.set("n", "<leader>sh", "<C-w>n", { desc = "New horizontal split" })
 keymap.set("n", "<leader>se", "<C-w>=", { desc = "Make splits equal size" }) -- make split windows equal width & height
 keymap.set("n", "<leader>sx", "<cmd>close<CR>", { desc = "Close current split" }) -- close current split window
 keymap.set("n", "<leader>sv", "<cmd>vs <bar> enew<CR>", { desc = "New vertical split"})
+keymap.set("n", "<leader>so", "<cmd> only <CR>", { desc = "Close all but current split"})
 
 -- tabs
 keymap.set("n", "<leader>to", "<cmd>tabnew <bar> Telescope oldfiles<CR>", { desc = "Open recent files in anew tab" }) -- open new tab
@@ -81,7 +82,9 @@ keymap.set("n", "<leader>l9", "<Cmd> r ~/Documents/LaTeX/snippets/dynamicParenth
 
 keymap.set("n", "<leader>lsx", "<Cmd> r ~/Documents/LaTeX/snippets/crossProduct<CR>6li", { desc = "Cross Product"})
 
-
+--C++ Snippets
+keymap.set("n","<leader>lsh", "<Cmd> r ~/Documents/LaTeX/snippets/fileheader<CR>", { desc = "C++ file header"})
+keymap.set("n","<leader>lsf", "<Cmd> r ~/Documents/LaTeX/snippets/function<CR>", { desc = "C++ function comment"})
 
 vim.keymap.set("n", "<leader>lsn", function()
   vim.cmd("r ~/Documents/LaTeX/templates/notes.tex")
@@ -101,3 +104,10 @@ end, { desc = "Note taking template with date" })
 -- C++ Snippets
 keymap.set("n", "<leader>cts", "<Cmd>r ~/Documents/cpp/snippets/neutral<CR>", { desc = "Flexible main file"})
 
+--DAP
+vim.keymap.set("n", "<F5>", function() require'dap'.continue() end)
+vim.keymap.set("n", "<F10>", function() require'dap'.step_over() end)
+vim.keymap.set("n", "<F11>", function() require'dap'.step_into() end)
+vim.keymap.set("n", "<F12>", function() require'dap'.step_out() end)
+vim.keymap.set("n", "<F6>", function() require'dap'.toggle_breakpoint() end)
+vim.keymap.set("n", "<F7>", function() require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: ')) end)

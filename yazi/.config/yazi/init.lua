@@ -1,3 +1,4 @@
+Manager = {}
 function Manager:render(area)
 	local chunks = self:layout(area)
 

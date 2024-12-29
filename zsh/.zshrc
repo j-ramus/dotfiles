@@ -47,7 +47,7 @@ alias crimson="ssh ramus@192.168.1.114"
 alias holy="ssh holymountain"
 alias :q="exit" 
 alias inv='nvim $(fzf -m --preview="bat --color=always {}")'
-alias osu='nvim ~/Documents/OSU/Fall2024/' 
+alias osu='nvim ~/Documents/OSU/Winter2025/' 
 alias config='nvim ~/.config'
 alias osuid='cat ~/Documents/LaTeX/snippets/studentid | cowsay -f stimpy | lolcat && echo "934570558" | pbcopy'
 alias engr='kitten ssh ramusj@access.engr.oregonstate.edu'
