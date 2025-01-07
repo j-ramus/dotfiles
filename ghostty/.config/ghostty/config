@@ -1,0 +1,20 @@
+theme = Cyberdyne
+font-size = 20
+font-family = "LilexNerdFontMono"
+font-thicken = true
+shell-integration = zsh
+macos-option-as-alt = true
+
+# To delete from the current position to the start of the line
+keybind = super+backspace=esc:w
+
+
+keybind = super+h=goto_split:left
+keybind = super+l=goto_split:right
+keybind = super+j=goto_split:bottom
+keybind = super+k=goto_split:top
+
+keybind = super+j=new_split:down
+
+
+fullscreen = true

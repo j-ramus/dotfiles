@@ -143,5 +143,22 @@ return {
       end,
     })
   end,
+    -- texlab setup for LaTeX
+  ["texlab"] = function()
+    lspconfig["texlab"].setup({
+      capabilities = capabilities,
+      settings = {
+        texlab = {
+          build = {
+            executable = "latexmk",
+            args = { "-pdf", "-interaction=nonstopmode", "%f" },
+          },
+          lint = {
+            enable = true,  -- Enable syntax checking with texlab
+          },
+        },
+      },
+    })
+  end,
 }
 

@@ -111,3 +111,22 @@ vim.keymap.set("n", "<F11>", function() require'dap'.step_into() end)
 vim.keymap.set("n", "<F12>", function() require'dap'.step_out() end)
 vim.keymap.set("n", "<F6>", function() require'dap'.toggle_breakpoint() end)
 vim.keymap.set("n", "<F7>", function() require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: ')) end)
+
+
+
+-- Toggle diagnostics globally
+function ToggleGlobalDiagnostics()
+    diagnostics_enabled = not diagnostics_enabled
+    if diagnostics_enabled then
+        vim.diagnostic.enable()  -- Enable globally
+        print("Diagnostics Enabled (Global)")
+    else
+        vim.diagnostic.enable(false)
+        --vim.diagnostic.disable()  -- Disable globally
+        print("Diagnostics Disabled (Global)")
+    end
+end
+
+vim.keymap.set({'n', 'i'}, '<F1>', ToggleGlobalDiagnostics, { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>vg', ToggleGlobalDiagnostics, { noremap = true, silent = true, desc = "Toggle Diagnostics" })
+

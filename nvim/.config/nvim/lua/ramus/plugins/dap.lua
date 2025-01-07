@@ -1,13 +1,24 @@
 return {
     {
         "jay-babu/mason-nvim-dap.nvim",
+        event = "VeryLazy",
         dependencies = {
             "williamboman/mason.nvim",
-            "mfussenegger/nvim-dap"
+            "mfussenegger/nvim-dap",
         },
         opts = {
-            ensure_installed = { "codelldb" },
-            automatic_installation = true,
-        }
-    }
+          handlers = {},
+        },
+    },
+    {
+      "rcarriga/nvim-dap-ui",
+      event = "VeryLazy",
+      dependencies = {
+        "mfussenegger/nvim-dap",
+        "nvim-neotest/nvim-nio",
+      },
+      config = function()
+      require("dapui").setup()
+      end,
+    },
 }
