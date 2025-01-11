@@ -17,10 +17,16 @@ Plug 'junegunn/seoul256.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'terryma/vim-smooth-scroll'
-
+Plug 'dense-analysis/ale'
+plug 'vim-airline/vim-airline'
+plug 'vim-airline/vim-airline-themes'
 call plug#end()
 
 color seoul256
+
+let g:airline#extensions#ale#enabled = 1
+let g:airline#extensions#tabline#enabled = 1
+
 
 
 noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>

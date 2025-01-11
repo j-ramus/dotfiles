@@ -14,7 +14,7 @@ keybind = super+l=goto_split:right
 keybind = super+j=goto_split:bottom
 keybind = super+k=goto_split:top
 
-keybind = super+j=new_split:down
+keybind = super+e=new_split:down
 
 
 fullscreen = true
