@@ -1,0 +1,47 @@
+#   GIT IGNORE
+#
+
+.DS_Store
+
+
+#ignore all CMake builds
+build/
+
+.cache/
+
+temp/
+
+#ignore locally stashed files
+
+keep_local/
+
+#report/figures/
+#report/listings/
+
+Session.vim
+
+
+#########
+# LaTeX #
+#########
+
+*.blg
+*.bbl
+*.dvi
+*.glg
+*.gls
+*.ilg
+*.ind
+*.synctex.gz
+*.fdb_latexmk       # for latexmk utility
+*.nav               # for beamer presentations
+*.snm               # for beamer presentations
+*.vrb               # for verbatim files
+*.xdv               # for XeTeX dvi output
+*.aux
+*.bcf
+*.fdb_latexmk
+*.fls
+*.log
+*.run.xml
+

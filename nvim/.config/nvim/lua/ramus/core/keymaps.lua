@@ -5,13 +5,12 @@ local keymap = vim.keymap
 keymap.set("i", "jk", "<ESC>", { desc = "Exit insert mode with jk"})
 
 --autocorrect my dumb mistakes
-keymap.set("i", "teh", "the")
-keymap.set("i", "Teh", "The")
-keymap.set("i", "thier", "their")
-keymap.set("i", "Thier", "Their")
+--keymap.set("i", "teh", "the")
+--keymap.set("i", "Teh", "The")
+--keymap.set("i", "thier", "their")
+--keymap.set("i", "Thier", "Their")
 --keymap.set("i", "osu", "Oregon State University")
-keymap.set("i", "jr", "John Ramus")
-keymap.set("i", "adn", "and")
+--keymap.set("i", "adn", "and")
 
 
 keymap.set("n", "<leader>nh", ":nohl<CR>", { desc = "Clear search highlights" })

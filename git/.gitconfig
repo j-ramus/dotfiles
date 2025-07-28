@@ -6,3 +6,5 @@
 [user]
 	name = j-ramus
 	email = ramusj@oregonstate.edu
+[core]
+	excludesfile = /Users/ramus/dotfiles/git-ignore/global
