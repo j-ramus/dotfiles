@@ -18,4 +18,3 @@ keybind = super+e=new_split:down
 
 
 fullscreen = true
-keybind = shift+enter=text:\n

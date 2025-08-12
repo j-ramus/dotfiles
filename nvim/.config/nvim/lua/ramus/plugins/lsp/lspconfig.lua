@@ -6,8 +6,10 @@ return {
 
   dependencies = {
     "hrsh7th/cmp-nvim-lsp",
+    "ziglang/zig.vim",
     { "antosha417/nvim-lsp-file-operations", config = true },
     { "folke/neodev.nvim", opts = {} },
+    { "nvimtools/none-ls.nvim", dependencies = { "nvim-lua/plenary.nvim" } },
   },
 
   config = function()
@@ -31,14 +33,6 @@ return {
         keymap.set("n", "<leader>gi", "Telescope lsp_implementations", opts)
         opts.desc = "Show LSP type definitions"
         keymap.set("n", "<leader>gt", "Telescope lsp_type_definitions", opts)
-        opts.desc = "See available code actions"
-        --keymap.set({ "n", "v" }, "ca", vim.lsp.buf.code_action, opts)
-        --opts.desc = "Smart rename"
-        keymap.set("n", "rn", vim.lsp.buf.rename, opts)
-        opts.desc = "Show buffer diagnostics"
-        keymap.set("n", "<leader>D", "Telescope diagnostics bufnr=0", opts)
-        opts.desc = "Show line diagnostics"
-        keymap.set("n", "<leader>d", vim.diagnostic.open_float, opts)
         opts.desc = "Go to previous diagnostic"
         keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
         opts.desc = "Go to next diagnostic"
@@ -50,7 +44,10 @@ return {
       end,
     })
 
+vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#3e424b", fg = "#ed5d91" }) -- Set background and foreground color of the float box
+vim.api.nvim_set_hl(0, "FloatBorder", { fg = "#FC9D9A" }) 
     -- capabilities for autocompletion
+    --
     local capabilities = cmp_nvim_lsp.default_capabilities()
 
 
@@ -63,7 +60,8 @@ return {
           [vim.diagnostic.severity.HINT] = "󰟟",
         },
       },
-      virtual_text = true,
+      virtual_text = false,
+      virutal_lines = false,
       underline = true,
       severity_sort = true,
       float = { border = "rounded", source = "always" },
@@ -80,6 +78,36 @@ return {
           })
         end,
 
+
+        -- Pyright for Python
+    ["pyright"] = function()
+      lspconfig.pyright.setup({
+        capabilities = capabilities,
+        settings = {
+          python = {
+            analysis = {
+              typeCheckingMode = "basic", -- Options: "off", "basic", "strict"
+              autoSearchPaths = true,
+              useLibraryCodeForTypes = true,
+            },
+          },
+        },
+        root_dir = lspconfig.util.root_pattern("pyproject.toml", "setup.py", ".git") or vim.loop.cwd,
+      })
+    end,
+
+    -- Ruff for linting and formatting
+    ["ruff"] = function()
+      lspconfig.ruff.setup({
+        capabilities = capabilities,
+        root_dir = lspconfig.util.root_pattern("pyproject.toml", "ruff.toml", ".git") or vim.loop.cwd,
+        settings = {
+          -- Optional: Customize Ruff settings
+          args = { "--extend-select", "I" }, -- Enable additional checks (e.g., isort for imports)
+        },
+      })
+    end,
+
         -- clangd with custom cmd and root_dir
         ["clangd"] = function()
           lspconfig["clangd"].setup({
@@ -89,34 +117,21 @@ return {
           })
         end,
 
-        -- svelte server with on_attach to setup autocmd for file changes
-        ["svelte"] = function()
-          lspconfig["svelte"].setup({
-            capabilities = capabilities,
-            on_attach = function(client, bufnr)
-              vim.api.nvim_create_autocmd("BufWritePost", {
-                pattern = { "*.js", "*.ts" },
-                callback = function(ctx)
-                  client.notify("$/onDidChangeTsOrJsFile", { uri = ctx.match })
-                end,
-              })
-            end,
-          })
-        end,
-
-        -- graphql server
-        ["graphql"] = function()
-          lspconfig["graphql"].setup({
-            capabilities = capabilities,
-            filetypes = { "graphql", "gql", "svelte", "typescriptreact", "javascriptreact" },
-          })
-        end,
-
-        -- emmet language server
-        ["emmet_ls"] = function()
-          lspconfig["emmet_ls"].setup({
-            capabilities = capabilities,
-            filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less", "svelte" },
+                -- ZLS with custom settings
+        ["zls"] = function()
+          lspconfig.zls.setup({
+            -- Server-specific settings for ZLS
+            -- For example:
+            filetypes = { "zig", "zir" },
+            root_dir = lspconfig.util.root_pattern("build.zig", ".git") or vim.loop.cwd,
+            single_file_support = true,
+            -- Optional ZLS-specific configuration options, as suggested by zigtools.org
+            -- settings = {
+            --   zls = {
+            --     enable_build_on_save = true,
+            --     zig_exe_path = '/path/to/your/zig_executable', -- If not in PATH
+            --   }
+            -- }
           })
         end,
 
@@ -158,4 +173,5 @@ return {
     })
   end,
 }
+
 

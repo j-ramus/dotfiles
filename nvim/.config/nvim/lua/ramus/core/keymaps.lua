@@ -104,12 +104,12 @@ end, { desc = "Note taking template with date" })
 keymap.set("n", "<leader>cts", "<Cmd>r ~/Documents/cpp/snippets/neutral<CR>", { desc = "Flexible main file"})
 
 --DAP
-vim.keymap.set("n", "<F5>", function() require'dap'.continue() end)
-vim.keymap.set("n", "<F10>", function() require'dap'.step_over() end)
-vim.keymap.set("n", "<F11>", function() require'dap'.step_into() end)
-vim.keymap.set("n", "<F12>", function() require'dap'.step_out() end)
-vim.keymap.set("n", "<F6>", function() require'dap'.toggle_breakpoint() end)
-vim.keymap.set("n", "<F7>", function() require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: ')) end)
+--vim.keymap.set("n", "<F5>", function() require'dap'.continue() end)
+-- vim.keymap.set("n", "<F10>", function() require'dap'.step_over() end)
+-- vim.keymap.set("n", "<F11>", function() require'dap'.step_into() end)
+-- vim.keymap.set("n", "<F12>", function() require'dap'.step_out() end)
+-- vim.keymap.set("n", "<F6>", function() require'dap'.toggle_breakpoint() end)
+-- vim.keymap.set("n", "<F7>", function() require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: ')) end)
 
 
 
@@ -129,3 +129,15 @@ end
 vim.keymap.set({'n', 'i'}, '<F1>', ToggleGlobalDiagnostics, { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>vg', ToggleGlobalDiagnostics, { noremap = true, silent = true, desc = "Toggle Diagnostics" })
 
+
+vim.keymap.set("n", "<leader>D", "<CMD>Telescope diagnostics bufnr=0<CR>",  { desc = "Buffer Diagnostics" })
+vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float, { desc = "Line Diagnoostics"})
+
+-- LSP Saga
+vim.keymap.set("n", "<F5>", "<cmd>Lspsaga lsp_finder<CR>", { desc = "Lspsaga Finder" })
+vim.keymap.set("n", "gp", "<cmd>Lspsaga peek_definition<CR>", { desc = "Peek Definition" })
+vim.keymap.set("n", "<F6>", "<cmd>Lspsaga peek_definition<CR>", { desc = "Peek Definition" })
+vim.keymap.set("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", { desc = "Code Action" })
+vim.keymap.set("n", "<F4>", "<cmd>Lspsaga code_action<CR>", { desc = "Code Action" })
+vim.keymap.set("n", "r", "<cmd>Lspsaga rename<CR>", { desc = "Rename" })
+vim.keymap.set("n", "<F3>", "<cmd>Lspsaga show_line_diagnostics<CR>", { desc = "Line Diagnostics" })

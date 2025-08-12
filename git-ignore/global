@@ -1,29 +1,32 @@
-#   GIT IGNORE
-#
+#      ________________   ___________   ______  ____  ______
+#    / ____/  _/_  __/  /  _/ ____/ | / / __ \/ __ \/ ____/
+#   / / __ / /  / /     / // / __/  |/ / / / / /_/ / __/   
+#  / /_/ // /  / /    _/ // /_/ / /|  / /_/ / _, _/ /___   
+#  \____/___/ /_/    /___/\____/_/ |_/\____/_/ |_/_____/
+#  
 
+# +-+-+-+-+ Individual Files -+-+-+-+-+-+-+-+-+-+
 .DS_Store
+a.out
 
-
-#ignore all CMake builds
-build/
-
+# +-+-+-+-+ Directories +-+-+-+-+
+build/      # cmake builds
 .cache/
-
+.claude/   # claude code 
+.mypy_cache/ # python linter
 temp/
-
-#ignore locally stashed files
-
 keep_local/
 
 #report/figures/
 #report/listings/
 
+# +-+-+-+-+ Vim/Nvim +-+-+-+-+-+
 Session.vim
 
 
-#########
-# LaTeX #
-#########
+# -+-+-+-+-+-+-+-+-+-+-+-+- #
+# +-+-+-+-+ LaTeX +-+-+-+-+ #
+# -+-+-+-+-+-+-+-+-+-+-+-+- #
 
 *.blg
 *.bbl

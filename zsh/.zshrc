@@ -30,6 +30,8 @@ export SSH_KEY_PATH="~/.ssh/rsa_id"
 export PATH="/Applications/MATLAB_R2024a.app/bin:$PATH"
 export PATH="/usr/local/bin:/usr/local/texlive/2024/bin/universal-darwin:$PATH"
 export PATH="/usr/local/opt/llvm/bin:$PATH"
+export PATH="/usr/local/bin/zig:$PATH"
+
 
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='vim'
