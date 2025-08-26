@@ -13,7 +13,6 @@ return {
     treesitter.setup({ -- enable syntax highlighting
       highlight = {
         enable = true,
-        disable = {"latex",}
       },
       -- enable indentation
       indent = { enable = true },
@@ -35,7 +34,6 @@ return {
         "markdown_inline",
         "svelte",
         "graphql",
-        "bash",
         "lua",
         "vim",
         "dockerfile",
@@ -77,8 +75,7 @@ return {
         "udev",
         "verilog",
         "v",
-        "commonlisp"
-
+        "commonlisp",
       },
       incremental_selection = {
         enable = true,

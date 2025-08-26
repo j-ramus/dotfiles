@@ -22,6 +22,11 @@ return {
       ),
     }
 
+    -- Configure ruff to ignore docstring warnings
+    lint.linters.ruff.args = {
+      "--ignore=D100,D101,D102,D103,D104,D105,D106,D107",
+    }
+
     lint.linters_by_ft = {
       -- JavaScript and TypeScript
       javascript = { "eslint_d" },
@@ -31,7 +36,7 @@ return {
       svelte = { "eslint_d" },
 
       -- Python
-      python = { "flake8", "mypy", "pylint" },
+      python = { "ruff", "mypy" },
 
       -- C and C++
       c = { "clangtidy", "cppcheck" },
@@ -47,7 +52,7 @@ return {
 
     -- Create a single autocmd group to lint on these events
     local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
-    vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
+    vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost" }, {
       group = lint_augroup,
       callback = function()
         lint.try_lint()

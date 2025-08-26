@@ -82,7 +82,7 @@ keymap.set("n", "<leader>l9", "<Cmd> r ~/Documents/LaTeX/snippets/dynamicParenth
 keymap.set("n", "<leader>lsx", "<Cmd> r ~/Documents/LaTeX/snippets/crossProduct<CR>6li", { desc = "Cross Product"})
 
 --C++ Snippets
-keymap.set("n","<leader>lsh", "<Cmd> r ~/Documents/LaTeX/snippets/fileheader<CR>", { desc = "C++ file header"})
+keymap.set("n","<leader>csh", "<Cmd> r ~/Documents/LaTeX/snippets/fileheader<CR>", { desc = "C++ file header"})
 keymap.set("n","<leader>lsf", "<Cmd> r ~/Documents/LaTeX/snippets/function<CR>", { desc = "C++ function comment"})
 
 vim.keymap.set("n", "<leader>lsn", function()
@@ -141,3 +141,8 @@ vim.keymap.set("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", { desc = "Code
 vim.keymap.set("n", "<F4>", "<cmd>Lspsaga code_action<CR>", { desc = "Code Action" })
 vim.keymap.set("n", "r", "<cmd>Lspsaga rename<CR>", { desc = "Rename" })
 vim.keymap.set("n", "<F3>", "<cmd>Lspsaga show_line_diagnostics<CR>", { desc = "Line Diagnostics" })
+
+-- Claude
+keymap.set("n", "<leader>cc", "<cmd>ClaudeCode<cr>", { desc = "Open Claude Chat" })
+keymap.set("v", "<leader>cs", "<cmd>ClaudeSend<cr>", { desc = "Send selection to Claude" })
+keymap.set("n", "<leader>cf", "<cmd>ClaudeFile<cr>", { desc = "Send current file to Claude" })

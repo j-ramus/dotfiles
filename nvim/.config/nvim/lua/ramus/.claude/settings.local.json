@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//Users/ramus/dotfiles/nvim/.config/nvim/**)",
+      "Read(//Users/ramus/dotfiles/nvim/.config/nvim/**)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

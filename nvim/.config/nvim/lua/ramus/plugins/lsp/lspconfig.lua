@@ -24,15 +24,15 @@ return {
       callback = function(ev)
         local opts = { buffer = ev.buf, silent = true }
         opts.desc = "Show LSP references"
-        keymap.set("n", "<leader>gR", "Telescope lsp_references", opts)
+        keymap.set("n", "<leader>gR", "<cmd>Telescope lsp_references<CR>", opts)
         opts.desc = "Go to declaration"
         keymap.set("n", "<leader>gD", vim.lsp.buf.declaration, opts)
         opts.desc = "Show LSP definitions"
-        keymap.set("n", "<leader>gd", "Telescope lsp_definitions", opts)
+        keymap.set("n", "<leader>gd", "<cmd>Telescope lsp_definitions<CR>", opts)
         opts.desc = "Show LSP implementations"
-        keymap.set("n", "<leader>gi", "Telescope lsp_implementations", opts)
+        keymap.set("n", "<leader>gi", "<cmd>Telescope lsp_implementations<CR>", opts)
         opts.desc = "Show LSP type definitions"
-        keymap.set("n", "<leader>gt", "Telescope lsp_type_definitions", opts)
+        keymap.set("n", "<leader>gt", "<cmd>Telescope lsp_type_definitions<CR>", opts)
         opts.desc = "Go to previous diagnostic"
         keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
         opts.desc = "Go to next diagnostic"
@@ -61,7 +61,7 @@ vim.api.nvim_set_hl(0, "FloatBorder", { fg = "#FC9D9A" })
         },
       },
       virtual_text = false,
-      virutal_lines = false,
+      virtual_lines = false,
       underline = true,
       severity_sort = true,
       float = { border = "rounded", source = "always" },
@@ -80,21 +80,21 @@ vim.api.nvim_set_hl(0, "FloatBorder", { fg = "#FC9D9A" })
 
 
         -- Pyright for Python
-    ["pyright"] = function()
-      lspconfig.pyright.setup({
-        capabilities = capabilities,
-        settings = {
-          python = {
-            analysis = {
-              typeCheckingMode = "basic", -- Options: "off", "basic", "strict"
-              autoSearchPaths = true,
-              useLibraryCodeForTypes = true,
-            },
-          },
-        },
-        root_dir = lspconfig.util.root_pattern("pyproject.toml", "setup.py", ".git") or vim.loop.cwd,
-      })
-    end,
+    --["pyright"] = function()
+    --  lspconfig.pyright.setup({
+    --    capabilities = capabilities,
+    --    settings = {
+    --      python = {
+    --        analysis = {
+    --          typeCheckingMode = "basic", -- Options: "off", "basic", "strict"
+    --          autoSearchPaths = true,
+    --          useLibraryCodeForTypes = true,
+    --        },
+    --      },
+    --    },
+    --    root_dir = lspconfig.util.root_pattern("pyproject.toml", "setup.py", ".git") or vim.loop.cwd,
+    --  })
+    --end,
 
     -- Ruff for linting and formatting
     ["ruff"] = function()
@@ -163,7 +163,7 @@ vim.api.nvim_set_hl(0, "FloatBorder", { fg = "#FC9D9A" })
                   args = { "-pdf", "-interaction=nonstopmode", "%f" },
                 },
                 lint = {
-                  enable = true,
+                  enable = false,
                 },
               },
             },
