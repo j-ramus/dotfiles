@@ -71,6 +71,12 @@ local function show_splash()
   
   vim.api.nvim_set_current_buf(buf)
   
+  -- Hide line numbers and sign column for splash screen
+  vim.wo.number = false
+  vim.wo.relativenumber = false
+  vim.wo.signcolumn = "no"
+  vim.wo.foldcolumn = "0"
+  
   -- Let Oil take over after brief delay in floating window mode
   vim.defer_fn(function()
     pcall(function()
@@ -103,6 +109,10 @@ local function show_splash()
       -- Keep focus on the floating window
       vim.api.nvim_set_current_win(win)
       
+      -- Create command abbreviation so :q becomes :qa in this buffer
+      vim.api.nvim_buf_set_option(oil_buf, "buftype", "nofile")
+      vim.cmd("cnoreabbrev <buffer> q qa")
+      
       -- Watch for when oil opens a file and move it to main window
       local file_opened_autocmd
       file_opened_autocmd = vim.api.nvim_create_autocmd("BufEnter", {
@@ -125,10 +135,11 @@ local function show_splash()
               vim.api.nvim_set_current_win(main_wins[1])
               vim.api.nvim_set_current_buf(opened_buf)
               
-              -- Restore normal window options
+              -- Restore normal window options from your config
+              vim.wo.relativenumber = true
               vim.wo.number = true
               vim.wo.signcolumn = "yes"
-              vim.wo.foldcolumn = "1"
+              vim.wo.foldcolumn = "auto"
             end
             
             -- Clean up the autocmd
@@ -137,7 +148,7 @@ local function show_splash()
         end,
       })
     end)
-  end, 1500)
+  end, 700)
 end
 
 -- Show splash on startup with no arguments
