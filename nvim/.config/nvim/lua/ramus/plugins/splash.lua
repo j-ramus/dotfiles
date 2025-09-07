@@ -71,9 +71,72 @@ local function show_splash()
   
   vim.api.nvim_set_current_buf(buf)
   
-  -- Let Oil take over after brief delay
+  -- Let Oil take over after brief delay in floating window mode
   vim.defer_fn(function()
-    pcall(function() vim.cmd('Oil') end)
+    pcall(function()
+      -- Open oil in a new window without affecting splash buffer
+      local oil = require("oil")
+      local current_buf = vim.api.nvim_get_current_buf()
+      
+      -- Calculate window size and position
+      local width = math.min(80, vim.o.columns - 4)
+      local height = math.min(20, vim.o.lines - 25)
+      local row = 22
+      local col = math.floor((vim.o.columns - width) / 2)
+      
+      -- Create floating window first
+      local oil_buf = vim.api.nvim_create_buf(false, true)
+      local win = vim.api.nvim_open_win(oil_buf, false, {
+        relative = "editor",
+        width = width,
+        height = height,
+        row = row,
+        col = col,
+        style = "minimal",
+        border = "rounded",
+      })
+      
+      -- Open oil in the floating window
+      vim.api.nvim_set_current_win(win)
+      oil.open(vim.fn.getcwd())
+      
+      -- Keep focus on the floating window
+      vim.api.nvim_set_current_win(win)
+      
+      -- Watch for when oil opens a file and move it to main window
+      local file_opened_autocmd
+      file_opened_autocmd = vim.api.nvim_create_autocmd("BufEnter", {
+        callback = function(ev)
+          -- If a non-oil buffer is opened and we're still in the floating window
+          if vim.bo[ev.buf].filetype ~= "oil" and vim.api.nvim_get_current_win() == win then
+            -- Get the opened buffer
+            local opened_buf = ev.buf
+            
+            -- Close the floating window
+            pcall(vim.api.nvim_win_close, win, false)
+            
+            -- Find main window
+            local main_wins = vim.tbl_filter(function(w)
+              return vim.api.nvim_win_get_config(w).relative == ""
+            end, vim.api.nvim_list_wins())
+            
+            if #main_wins > 0 then
+              -- Switch to main window and show the opened buffer
+              vim.api.nvim_set_current_win(main_wins[1])
+              vim.api.nvim_set_current_buf(opened_buf)
+              
+              -- Restore normal window options
+              vim.wo.number = true
+              vim.wo.signcolumn = "yes"
+              vim.wo.foldcolumn = "1"
+            end
+            
+            -- Clean up the autocmd
+            vim.api.nvim_del_autocmd(file_opened_autocmd)
+          end
+        end,
+      })
+    end)
   end, 1500)
 end
 
