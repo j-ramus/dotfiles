@@ -77,6 +77,12 @@ local function show_splash()
   vim.wo.signcolumn = "no"
   vim.wo.foldcolumn = "0"
   
+  -- Hide bufferline/tabline and statusline for splash screen
+  vim.o.showtabline = 0
+  vim.o.laststatus = 0
+  vim.o.ruler = false
+  vim.o.showcmd = false
+  
   -- Let Oil take over after brief delay in floating window mode
   vim.defer_fn(function()
     pcall(function()
@@ -140,6 +146,15 @@ local function show_splash()
               vim.wo.number = true
               vim.wo.signcolumn = "yes"
               vim.wo.foldcolumn = "auto"
+              
+              -- Restore statusline and tabline
+              vim.o.laststatus = 3
+              vim.o.showtabline = 1  -- Only show when multiple tabs exist
+              vim.o.ruler = true
+              vim.o.showcmd = true
+              
+              -- Set custom tabline to show only filename, not path
+              vim.opt.tabline = "%!v:lua.tabline_custom()"
             end
             
             -- Clean up the autocmd
@@ -159,5 +174,26 @@ vim.api.nvim_create_autocmd("VimEnter", {
     end
   end,
 })
+
+-- Custom tabline function to show only filenames
+function _G.tabline_custom()
+  local tabline = ''
+  for i = 1, vim.fn.tabpagenr('$') do
+    local winnr = vim.fn.tabpagewinnr(i)
+    local bufnr = vim.fn.tabpagebuflist(i)[winnr]
+    local filename = vim.fn.fnamemodify(vim.fn.bufname(bufnr), ':t')
+    if filename == '' then
+      filename = '[No Name]'
+    end
+    
+    if i == vim.fn.tabpagenr() then
+      tabline = tabline .. '%#TabLineSel# ' .. filename .. ' '
+    else
+      tabline = tabline .. '%#TabLine# ' .. filename .. ' '
+    end
+  end
+  tabline = tabline .. '%#TabLineFill#%T'
+  return tabline
+end
 
 return {}
