@@ -8,7 +8,8 @@
 # +-+-+-+-+ Individual Files -+-+-+-+-+-+-+-+-+-+
 .DS_Store
 a.out
-
+CLAUDE.md
+.claude
 # +-+-+-+-+ Directories +-+-+-+-+
 build/      # cmake builds
 .cache/
@@ -35,6 +36,8 @@ Session.vim
 *.gls
 *.ilg
 *.ind
+
+These decorators are fundamental tools in Python that help you write cleaner, more maintainable code by separating concerns and reducing boilerplate.
 *.synctex.gz
 *.fdb_latexmk       # for latexmk utility
 *.nav               # for beamer presentations

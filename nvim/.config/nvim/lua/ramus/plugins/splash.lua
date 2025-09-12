@@ -91,10 +91,10 @@ local function show_splash()
       local current_buf = vim.api.nvim_get_current_buf()
       
       -- Calculate window size and position
-      local width = math.min(80, vim.o.columns - 4)
-      local height = math.min(20, vim.o.lines - 25)
-      local row = 22
-      local col = math.floor((vim.o.columns - width) / 2)
+      local width = math.min(40, vim.o.columns - 4)
+      local height = math.min(20, vim.o.lines - 20)
+      local row = 18
+      local col = math.floor((vim.o.columns - width) / 1.2)
       
       -- Create floating window first
       local oil_buf = vim.api.nvim_create_buf(false, true)
@@ -153,8 +153,7 @@ local function show_splash()
               vim.o.ruler = true
               vim.o.showcmd = true
               
-              -- Set custom tabline to show only filename, not path
-              vim.opt.tabline = "%!v:lua.tabline_custom()"
+              -- Barbar plugin will handle tabline styling
             end
             
             -- Clean up the autocmd
@@ -175,25 +174,5 @@ vim.api.nvim_create_autocmd("VimEnter", {
   end,
 })
 
--- Custom tabline function to show only filenames
-function _G.tabline_custom()
-  local tabline = ''
-  for i = 1, vim.fn.tabpagenr('$') do
-    local winnr = vim.fn.tabpagewinnr(i)
-    local bufnr = vim.fn.tabpagebuflist(i)[winnr]
-    local filename = vim.fn.fnamemodify(vim.fn.bufname(bufnr), ':t')
-    if filename == '' then
-      filename = '[No Name]'
-    end
-    
-    if i == vim.fn.tabpagenr() then
-      tabline = tabline .. '%#TabLineSel# ' .. filename .. ' '
-    else
-      tabline = tabline .. '%#TabLine# ' .. filename .. ' '
-    end
-  end
-  tabline = tabline .. '%#TabLineFill#%T'
-  return tabline
-end
 
 return {}

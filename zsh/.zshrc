@@ -31,6 +31,7 @@ export PATH="/Applications/MATLAB_R2024a.app/bin:$PATH"
 export PATH="/usr/local/bin:/usr/local/texlive/2024/bin/universal-darwin:$PATH"
 export PATH="/usr/local/opt/llvm/bin:$PATH"
 export PATH="/usr/local/bin/zig:$PATH"
+export PATH="~/.npm-global/bin:$PATH"
 
 
 if [[ -n $SSH_CONNECTION ]]; then
@@ -55,13 +56,19 @@ alias config='nvim ~/.config'
 alias osuid='cat ~/Documents/LaTeX/snippets/studentid | cowsay -f stimpy | lolcat && echo "934570558" | pbcopy'
 alias kitty-engr='kitten ssh ramusj@access.engr.oregonstate.edu'
 alias engr='TERM=xterm ssh ramusj@access.engr.oregonstate.edu'
-alias skool='cd ~/Documents/OSU/Summer2025/'
-alias repos='cd ~/Documents/OSU/repos/cs261'
+alias skool='cd ~/Documents/OSU/Fall2025/'
+alias repos='cd ~/Documents/OSU/repos/'
 alias notes='cd ~/Documents/OSU/markdown'
 alias pfsense='ssh admin@192.168.1.1'
 alias gh-create='gh repo create --private --source=. --remote=origin && git push -u --all && gh browse'
 alias gh-first='git push --set-upstream origin main'
 alias stash='ssh root@192.168.1.69'
+alias vault='/Users/ramus/scripts/toggle_vault.sh'
+alias nivm='nvim'
+alias install-claude='npm install -g @anthropic-ai/claude-code'
+alias vim="nvim"
+alias vi="command vim"
+
 # Check if SSH agent is already running, and start it silently if not
 if [ -z "$SSH_AUTH_SOCK" ]; then
     eval "$(ssh-agent -s > /dev/null 2>&1)"
@@ -70,8 +77,27 @@ fi
 fastfetch 
 
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm#}
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# Lazy load nvm
+nvm() {
+  unset -f nvm
+  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+  nvm "$@"
+}
+
+# Lazy load node and npm
+node() {
+  unset -f node
+  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+  node "$@"
+}
+
+npm() {
+  unset -f npm
+  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+  npm "$@"
+}
 
 #function yy() {
 #	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"

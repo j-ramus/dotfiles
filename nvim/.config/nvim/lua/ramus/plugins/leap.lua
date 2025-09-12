@@ -7,13 +7,8 @@ return {
     -- leap.add_default_mappings()
     
     -- Customize leap settings
-    leap.opts.highlight_unlabeled_phase_one_targets = false
+    leap.opts.highlight_unlabeled_phase_one_targets = true
     leap.opts.case_sensitive = false
-    leap.opts.equivalence_classes = { ' \t\r\n', }
-    
-    -- Safe labels (avoid punctuation that might interfere)
-    leap.opts.safe_labels = 'sfnut/SFNLHMUGTZ?'
-    leap.opts.labels = 'sfnjklhodweimbuyvrpgtaqc/SFNJKLHODWEIMBUYVRPGTAQC?'
     
     -- Custom highlight groups for better visibility
     vim.api.nvim_set_hl(0, 'LeapBackdrop', { link = 'Comment' })
@@ -24,10 +19,26 @@ return {
     })
     
     -- Use f/F for leap (replaces find-char motions)
-    vim.keymap.set({'n', 'x', 'o'}, 'f', '<Plug>(leap-forward)')
-    vim.keymap.set({'n', 'x', 'o'}, 'F', '<Plug>(leap-backward)')
+    vim.keymap.set({'n', 'x', 'o'}, 'f', function() 
+      leap.leap { 
+        target_windows = { vim.fn.win_getid() },
+        multiline = true,
+        inclusive_op = true
+      } 
+    end)
+    vim.keymap.set({'n', 'x', 'o'}, 'F', function() 
+      leap.leap { 
+        target_windows = { vim.fn.win_getid() }, 
+        backward = true,
+        multiline = true,
+        inclusive_op = true
+      } 
+    end)
     
     -- Cross-window search
-    vim.keymap.set({'n', 'x', 'o'}, 'gs', '<Plug>(leap-cross-window)')
+    vim.keymap.set({'n', 'x', 'o'}, 'gs', function() leap.leap { target_windows = vim.tbl_filter(
+      function(win) return vim.api.nvim_win_get_config(win).focusable end,
+      vim.api.nvim_tabpage_list_wins(0)
+    ) } end)
   end,
 }

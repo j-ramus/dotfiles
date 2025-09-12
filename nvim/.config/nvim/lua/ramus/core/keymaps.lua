@@ -49,7 +49,7 @@ keymap.set("n", "<Leader>ll", ":VimtexCompile<CR>", { desc = "Toggle tex compile
 keymap.set("n", "<Leader>lt", ":VimtexTocToggle<CR>", { desc = "Toggle tex TOC", silent = true })
 keymap.set("n", "<Leader>lw", "<Cmd>!texcount -1 '%:p'<CR>", { desc = "Word Count", silent = true})
 keymap.set("n", "<Leader>ta", "<Cmd>tab all<CR>", { desc = "All buffers into tabs", silent = true })
-keymap.set("n", "<Leader>md", "<Cmd>MarkdownToPDF<CR>", { desc = "Compile Markdown to PDF", silent = true })
+-- keymap.set("n", "<Leader>md", "<Cmd>MarkdownToPDF<CR>", { desc = "Compile Markdown to PDF", silent = true })
 
 -- Arduino-cli
 keymap.set('n', '<leader>al', function()
@@ -96,7 +96,8 @@ vim.keymap.set("n", "<leader>lsn", function()
 end, { desc = "Note taking template with date" })
 
 
-
+-- Marks
+keymap.set("n", "<leader>m", ":Telescope marks<CR>", { desc = "Telescope Marks", silent = true})
 
 
 

@@ -13,9 +13,10 @@ keybind = super+h=goto_split:left
 keybind = super+l=goto_split:right
 keybind = super+j=goto_split:bottom
 keybind = super+k=goto_split:top
-
 keybind = super+e=new_split:down
 
 
 fullscreen = true
 keybind = shift+enter=text:\n
+mouse-hide-while-typing = true 
+window-vsync = true

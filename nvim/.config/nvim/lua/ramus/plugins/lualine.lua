@@ -62,10 +62,61 @@ return {
             color = { fg = "#ff9e64" },
           },
           { "encoding" },
-          { "fileformat" },
           { "filetype" },
         },
       },
+      tabline = {
+        lualine_a = {
+          {
+            'buffers',
+            show_filename_only = true,
+            hide_filename_extension = false,
+            show_modified_status = true,
+            cond = function()
+              -- Only show if more than one meaningful buffer (exclude empty unnamed buffers)
+              local bufs = vim.fn.getbufinfo({buflisted = 1})
+              local meaningful_bufs = {}
+              for _, buf in ipairs(bufs) do
+                -- Include if: has a name OR is modified (even if unnamed)
+                if buf.name ~= "" or buf.changed == 1 then
+                  table.insert(meaningful_bufs, buf)
+                end
+              end
+              return #meaningful_bufs > 1
+            end,
+            symbols = {
+              modified = ' ',
+              alternate_file = '',  -- Remove the # symbol
+              directory =  '',
+            },
+            mode = 0, -- 0: Shows buffer name
+                      -- 1: Shows buffer index
+                      -- 2: Shows buffer name + buffer index
+            max_length = vim.o.columns * 2 / 3,
+            filetype_names = {
+              TelescopePrompt = 'Telescope',
+              dashboard = 'Dashboard',
+              packer = 'Packer',
+              fzf = 'FZF',
+              alpha = 'Alpha'
+            },
+            buffers_color = {
+              active = { fg = colors.bg, bg = colors.blue, gui = 'bold' },
+              inactive = { fg = colors.fg, bg = colors.inactive_bg },
+            },
+          }
+        },
+        lualine_z = {
+          {
+            'tabs',
+            max_length = vim.o.columns / 3,
+            tabs_color = {
+              active = { fg = colors.bg, bg = colors.blue, gui = 'bold' },
+              inactive = { fg = colors.fg, bg = colors.inactive_bg },
+            }
+          }
+        }
+      }
     })
   end,
 }
