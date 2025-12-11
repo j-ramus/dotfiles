@@ -1,5 +1,6 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =5
+let g:netrw_dirhistcnt =6
+let g:netrw_dirhist_6='/Users/ramus/Documents/OSU/repos/Resume'
 let g:netrw_dirhist_5='/Users/ramus/dotfiles/nvim/.config/nvim/lua/ramus/plugins'
 let g:netrw_dirhist_4='/Users/ramus/dotfiles/nvim/.config/nvim/lua/ramus'
 let g:netrw_dirhist_3='/Users/ramus/dotfiles/nvim/.config/nvim/lua'
@@ -9,4 +10,3 @@ let g:netrw_dirhist_0='/Users/ramus/Documents/OSU/repos/cs162/mifMaker'
 let g:netrw_dirhist_9='/Users/ramus/Documents/OSU/repos/cs162/programming-assignment-3-pokemon-battle-j-ramus'
 let g:netrw_dirhist_8='/Users/ramus/Documents/OSU/repos/cs162/lab-3-j-ramus'
 let g:netrw_dirhist_7='/Users/ramus/dotfiles/vim'
-let g:netrw_dirhist_6='/Users/ramus/dotfiles'

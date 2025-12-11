@@ -165,14 +165,14 @@ local function show_splash()
   end, 700)
 end
 
--- Show splash on startup with no arguments
-vim.api.nvim_create_autocmd("VimEnter", {
-  callback = function()
-    if vim.fn.argc() == 0 then
-      vim.defer_fn(show_splash, 50)
-    end
-  end,
-})
+-- Show splash on startup with no arguments (disabled - using direct Oil instead)
+-- vim.api.nvim_create_autocmd("VimEnter", {
+--   callback = function()
+--     if vim.fn.argc() == 0 then
+--       vim.defer_fn(show_splash, 50)
+--     end
+--   end,
+-- })
 
 
 return {}

@@ -45,7 +45,7 @@ return {
       -- Other filetypes you had:
       clojure = { "clojure_lsp" },
       verilog = { "iverilog" },
-      tex = { "chktex" },
+      -- tex = { "chktex" },  -- Disabled: too noisy
       markdown = { "markdownlint" },
       asm = { "nasm" },
     }

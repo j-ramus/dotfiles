@@ -1,5 +1,7 @@
 return {
   "stevearc/oil.nvim",
+  lazy = false,
+  priority = 1000,
   opts = {},
   dependencies = { "nvim-tree/nvim-web-devicons" },
   config = function()
@@ -145,5 +147,17 @@ return {
     -- Set up keymaps
     vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
     vim.keymap.set("n", "<leader>-", require("oil").toggle_float, { desc = "Open oil in floating window" })
+
+    -- Open oil when starting nvim with no arguments
+    vim.api.nvim_create_autocmd("VimEnter", {
+      callback = function()
+        if vim.fn.argc() == 0 then
+          -- Use defer_fn to ensure everything is fully loaded
+          vim.defer_fn(function()
+            require("oil").open()
+          end, 1)
+        end
+      end,
+    })
   end,
 }
